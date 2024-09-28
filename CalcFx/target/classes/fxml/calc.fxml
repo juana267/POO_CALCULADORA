@@ -6,7 +6,7 @@
 <HBox style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.calcfx.control.CalcControl">
 
    <!-- Sección izquierda con los botones de la calculadora -->
-   <VBox prefHeight="289.0" prefWidth="284.0" spacing="10" style="-fx-background-color: black; -fx-padding: 10; -fx-border-color: white; -fx-border-width: 2;" VBox.vgrow="ALWAYS">
+   <VBox spacing="10" style="-fx-background-color: black; -fx-padding: 10; -fx-border-color: white; -fx-border-width: 2;" VBox.vgrow="ALWAYS">
 
       <!-- Título CALCULADORA -->
       <Label alignment="CENTER" maxWidth="Infinity" style="-fx-font-size: 20; -fx-text-fill: white;" text="CALCULADORA" />
@@ -35,38 +35,38 @@
          </rowConstraints>
 
          <!-- Primera fila de botones -->
-         <Button fx:id="btn7" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="7" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-         <Button fx:id="btn8" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="8" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-         <Button fx:id="btn9" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="9" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+         <Button fx:id="btn7" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="7" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+         <Button fx:id="btn8" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="8" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+         <Button fx:id="btn9" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="9" GridPane.columnIndex="2" GridPane.rowIndex="0" />
 
          <!-- Botón CE (ocupa columnas 3 y 4) -->
-         <Button fx:id="btnCE" onAction="#accionButton"  maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: aqua; -fx-text-fill: black; -fx-border-color: white; -fx-border-width: 2;" text="CE" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+         <Button fx:id="btnCE" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: aqua; -fx-text-fill: black; -fx-border-color: white; -fx-border-width: 2;" text="CE" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
          <!-- Botón C (ocupa columna 5) -->
-         <Button fx:id="btnC"  onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: red; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="C" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+         <Button fx:id="btnBorrar" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: red; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="C" GridPane.columnIndex="5" GridPane.rowIndex="0" />
 
          <!-- Segunda fila de botones -->
-         <Button fx:id="btn4" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-         <Button fx:id="btn5" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         <Button fx:id="btn6" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-         <Button fx:id="btnDiv"  onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-         <Button fx:id="btnMul" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="X" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-         <Button fx:id="btnPi" onAction="#accionButton"  maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="π" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+         <Button fx:id="btn4" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+         <Button fx:id="btn5" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <Button fx:id="btn6" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         <Button fx:id="btnDiv" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         <Button fx:id="btnMul" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="*" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+         <Button fx:id="btnPi" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="π" GridPane.columnIndex="5" GridPane.rowIndex="1" />
 
          <!-- Tercera fila de botones -->
-         <Button fx:id="btn1"  onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="1" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-         <Button fx:id="btn2" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Button fx:id="btn3" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-         <Button fx:id="btnRest" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-         <Button fx:id="btnSum" onAction="#accionButton"  maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="+" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-         <Button fx:id="btnBin" onAction="#accionButton"  maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="BIN" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+         <Button fx:id="btn1" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="1" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+         <Button fx:id="btn2" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button fx:id="btn3" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         <Button fx:id="btnRest" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <Button fx:id="btnSum" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="+" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+         <Button fx:id="btnBin" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="BIN" GridPane.columnIndex="5" GridPane.rowIndex="2" />
 
          <!-- Cuarta fila de botones -->
-         <Button fx:id="btn0" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-         <Button fx:id="btnDot" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="." GridPane.columnIndex="2" GridPane.rowIndex="3" />
-         <Button fx:id="btnPow" onAction="#accionButton"  maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="^" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-         <Button fx:id="btnSqrt" onAction="#accionButton"  maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="√" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-         <Button fx:id="btnEqual" onAction="#accionButton" maxHeight="Infinity" maxWidth="Infinity" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="=" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+         <Button fx:id="btn0" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+         <Button fx:id="btnDot" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="." GridPane.columnIndex="2" GridPane.rowIndex="3" />
+         <Button fx:id="btnPow" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="^" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+         <Button fx:id="btnSqrt" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="√" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+         <Button fx:id="btnIgual" maxHeight="Infinity" maxWidth="Infinity" onAction="#accionButton" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-width: 2;" text="=" GridPane.columnIndex="5" GridPane.rowIndex="3" />
       </GridPane>
    </VBox>
 
@@ -85,9 +85,9 @@
 
       <!-- Botones debajo de la tabla -->
       <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10;">
-         <Button fx:id="btnIniciar" onAction="#iniciar" layoutY="258.0" mnemonicParsing="false" text="Iniciar" />
-         <Button fx:id="btnAnular" onAction="#anular" layoutY="258.0" mnemonicParsing="false" text="Anular" />
-         <Button fx:id="btnOpc" onAction="#accionButton" style="-fx-background-color: yellow; -fx-font-size: 18;" text="JUANA TITTO LARICO" />
+         <Button fx:id="btnIniciar" layoutY="258.0" mnemonicParsing="false" onAction="#iniciar" text="Iniciar" />
+         <Button fx:id="btnAnular" layoutY="258.0" mnemonicParsing="false" onAction="#anular" text="Anular" />
+         <Button fx:id="btnOpc" style="-fx-background-color: yellow; -fx-font-size: 18;" text="JUANA TITTO LARICO" />
       </HBox>
    </VBox>
 

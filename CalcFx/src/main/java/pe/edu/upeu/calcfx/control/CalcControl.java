@@ -1,5 +1,6 @@
 package pe.edu.upeu.calcfx.control;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,69 +41,66 @@ public class CalcControl {
     TableColumn<CalcTO, Void> cOpc;
 
     private ObservableList<CalcTO> calcTOList;
-    private int indexEdit = -1;
+    private int indexEdit=-1;
 
     @FXML
-    Button  btn1, btn2, btn3, btn4, btn5, btn6,btn7, btn8, btn9, btn0, btnSum, btnRest, btnMul, btnDiv, btnPow, btnSqrt, btnPi, btnBin, btnEqual, btnC;
+    Button btn1, btn2, btn3, btn4, btn5, btn6,btn7, btn8, btn9,  btn0, btnSum,btnRest,btnMul,btnDiv,btnPow,btnSqrt,btnPi, btnBin,btnIgual,btnBorrar;
+
 
     @FXML
     public void initialize() {
+        listaOper();
         anular();
     }
 
-    int t = 0;
+    int t=0;
 
     @FXML
-    public void accionButton(ActionEvent event) {
-        Button button = (Button) event.getSource();
-        switch (button.getId()) {
-            case "btn7", "btn8", "btn9", "btn6", "btn5", "btn4", "btn3", "btn2", "btn1", "btn0": {
+    public void accionButton(ActionEvent event){
+        System.out.println("Holas");
+        Button button= (Button)event.getSource();
+        switch (button.getId()){
+            case "btn7","btn8","btn9","btn6","btn5","btn4","btn3","btn2","btn1","btn0":{
                 escribirNumeros(button.getText());
-            } break;
+                if(button.getId().equals("btn7") || button.getId().equals("btn8") ){
 
-            case "btnSum", "btnMul", "btnRest", "btnDiv", "btnPow", "btnSqrt", "btnPi", "btnBin": {
+                    if(t==0){
+                        button.setText("X");
+                        t=1;
+                    }else {
+                        button.setText("O");
+                        t=0;
+                    }
+                }
+
+            }break;
+            case "btnSum", "btnMul", "btnRest", "btnDiv", "btnPow", "btnSqrt", "btnPi", "btnBin":{
                 operador(button.getText());
-            } break;
-
-            case "btnEqual": {
+            }break;
+            case "btnIgual":{
                 calcularResultado();
-            } break;
-
-            case "btnC": {
+            }break;
+            case "btnBorrar":{
                 txtResultado.clear();
-            } break;
+            }
+
         }
+
     }
 
-    public void escribirNumeros(String valor) {
+    public void escribirNumeros(String valor){
         txtResultado.appendText(valor);
     }
 
-    public void operador(String valor) {
-        txtResultado.appendText(" " + valor + " ");
+    public void operador(String valor){
+        txtResultado.appendText(" "+valor+" ");
     }
 
-    public void calcularResultado() {
-        String[] valores = txtResultado.getText().split(" ");
-        double val1 = 0;
-        double val2 = 0;
-        try {
-            val1 = Double.parseDouble(valores[0]);
-        } catch (Exception e) {
-            txtResultado.setText("Error");
-            return;
-        }
-
-        if (valores.length == 3) {
-            try {
-                val2 = Double.parseDouble(valores[2]);
-            } catch (Exception e) {
-                txtResultado.setText("Error");
-                return;
-            }
-        }
-
-        switch (valores[1]) {
+    public  void calcularResultado(){
+        String[] valores=txtResultado.getText().split(" ");
+        double val1=Double.parseDouble(String.valueOf(valores[0]));
+        double val2=Double.parseDouble(String.valueOf(valores[2]));
+        switch (valores[1]){
             case "+": txtResultado.setText(String.valueOf(val1 + val2)); break;
             case "-": txtResultado.setText(String.valueOf(val1 - val2)); break;
             case "/": txtResultado.setText(String.valueOf(val1 / val2)); break;
@@ -113,29 +111,34 @@ public class CalcControl {
             case "BIN": txtResultado.setText(Integer.toBinaryString((int) val1)); break;
         }
 
-        CalcTO to = new CalcTO();
+        CalcTO to=new CalcTO();
         to.setNum1(String.valueOf(val1));
         to.setNum2(String.valueOf(val2));
         to.setOperador(valores[1].charAt(0));
-        to.setResultado(String.valueOf(txtResultado.getText()));
+        to.setId(indexEdit);
 
-        if (indexEdit != -1) {
-            serviceI.actualizarResultados(to, indexEdit);
-        } else {
+        to.setResultado(String.valueOf(txtResultado.getText()));
+        if(indexEdit!=-1){
+            serviceI.actualizarResultados(to, to.getId());
+        }else{
+            System.out.println("VV:"+txtResultado.getText());
             serviceI.guardarResultados(to);
         }
-        indexEdit = -1;
+        indexEdit=-1;
         listaOper();
     }
 
     private void editOperCalc(CalcTO cal, int index) {
-        txtResultado.setText(cal.getNum1() + " " + cal.getOperador() + " " + cal.getNum2());
-        indexEdit = index;
+        System.out.println("Editing: " + cal.getNum1() + " Index:"+index);
+        txtResultado.setText(cal.getNum1()+" "+cal.getOperador()+" "+cal.getNum2());
+        indexEdit=index;
     }
 
     private void deleteOperCalc(CalcTO cal, int index) {
-        serviceI.eliminarResultados(index);
+        System.out.println("Deleting: " + cal.getNum2());
+        serviceI.eliminarResultados(cal.getId());
         listaOper();
+        //tableView.getItems().remove(cal);  // Elimina la operación del TableView
     }
 
     private void addActionButtonsToTable() {
@@ -149,13 +152,13 @@ public class CalcControl {
                 editButton.getStyleClass().setAll("btn", "btn-success");
                 editButton.setOnAction(event -> {
                     CalcTO cal = getTableView().getItems().get(getIndex());
-                    editOperCalc(cal, getIndex());
+                    editOperCalc(cal, cal.getId());
                 });
 
                 deleteButton.getStyleClass().setAll("btn", "btn-danger");
                 deleteButton.setOnAction(event -> {
                     CalcTO cal = getTableView().getItems().get(getIndex());
-                    deleteOperCalc(cal, getIndex());
+                    deleteOperCalc(cal,cal.getId());
                 });
             }
 
@@ -174,38 +177,60 @@ public class CalcControl {
         cOpc.setCellFactory(cellFactory);
     }
 
-    public void listaOper() {
-        List<CalcTO> lista = serviceI.obtenerResultados();
+    public void  listaOper(){
+        List<CalcTO> lista=serviceI.obtenerResultados();
+        for (CalcTO to:lista) {
+            System.out.println(to.toString());
+        }
+
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        cVal1.setCellValueFactory(new PropertyValueFactory<>("num1"));
-        cVal1.setCellFactory(TextFieldTableCell.forTableColumn());
+        // Vincular columnas con propiedades de CalcTO
+        cVal1.setCellValueFactory(new PropertyValueFactory<CalcTO,
+                        String>("num1"));
 
-        cVal2.setCellValueFactory(new PropertyValueFactory<>("num2"));
-        cVal2.setCellFactory(TextFieldTableCell.forTableColumn());
+        cVal1.setCellFactory(TextFieldTableCell.<CalcTO>forTableColumn());
 
-        cOper.setCellValueFactory(new PropertyValueFactory<>("Operador"));
-        cOper.setCellFactory(ComboBoxTableCell.forTableColumn('+', '-', '/', '*', '^', '√'));
+        cVal2.setCellValueFactory(new PropertyValueFactory<CalcTO,
+                String>("num2"));
 
-        cResult.setCellValueFactory(new PropertyValueFactory<>("Resultado"));
-        cResult.setCellFactory(TextFieldTableCell.forTableColumn());
+        cVal2.setCellFactory(TextFieldTableCell.<CalcTO>forTableColumn());
 
+        cOper.setCellValueFactory(new
+                PropertyValueFactory<>("Operador"));
+        cOper.setCellFactory(ComboBoxTableCell.<CalcTO,
+                Character>forTableColumn('+', '-', '/', '*'));
+
+        cResult.setCellValueFactory(new PropertyValueFactory<CalcTO,
+                String>("Resultado"));
+
+        cResult.setCellFactory(TextFieldTableCell.<CalcTO>forTableColumn());
+
+        // Agregar botones de eliminar y modificar
         addActionButtonsToTable();
         calcTOList = FXCollections.observableArrayList(serviceI.obtenerResultados());
+        // Asignar los datos al TableView
+        AnchorPane.setLeftAnchor(tableView, 0.0);
+        AnchorPane.setRightAnchor(tableView, 0.0);
+
+        cOper.prefWidthProperty().bind(tableView.widthProperty().multiply(0.25)); // 25% del ancho total
+
+        cResult.prefWidthProperty().bind(tableView.widthProperty().multiply(0.25)); // 25% del ancho total
+
+        cOpc.prefWidthProperty().bind(tableView.widthProperty().multiply(0.25));
         tableView.setItems(calcTOList);
     }
-
     @FXML
-    public void iniciar() {
+    public void iniciar(){
         activaDesacticaB(false);
     }
 
     @FXML
-    public void anular() {
+    public void anular(){
         activaDesacticaB(true);
     }
 
-    public void activaDesacticaB(boolean indi) {
+    public void activaDesacticaB(boolean indi){
         btn1.setDisable(indi);
         btn2.setDisable(indi);
         btn3.setDisable(indi);
@@ -216,6 +241,7 @@ public class CalcControl {
         btn8.setDisable(indi);
         btn9.setDisable(indi);
         btn0.setDisable(indi);
+        btn0.setDisable(indi);
         btnSum.setDisable(indi);
         btnRest.setDisable(indi);
         btnMul.setDisable(indi);
@@ -224,7 +250,8 @@ public class CalcControl {
         btnSqrt.setDisable(indi);
         btnPi.setDisable(indi);
         btnBin.setDisable(indi);
-        btnEqual.setDisable(indi);
-        btnC.setDisable(indi);
+        btnIgual.setDisable(indi);
+        btnBorrar.setDisable(indi);
     }
+
 }
